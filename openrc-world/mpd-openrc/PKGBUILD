@@ -1,0 +1,35 @@
+# Maintainer: artoo <artoo@artixlinux.org>
+
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+
+pkgname=mpd-openrc
+pkgver=20171213
+pkgrel=1
+pkgdesc="OpenRC mpd init script"
+arch=('any')
+url="https://github.com/artix-linux/packages"
+license=('GPL2')
+groups=('openrc-world')
+depends=('openrc' 'mpd')
+conflicts=('systemd-sysvcompat')
+source=("mpd.initd::${_url}/media-sound/mpd/files/mpd2.init")
+sha256sums=('6ca354f8b8c4b0e8595f7dbda1058fd471a6b538469ea10e7caf8e7f263f621a')
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g')
+    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+}
+
+_inst_confd(){
+    install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+}
+
+package(){
+    _inst_initd 'mpd'
+}

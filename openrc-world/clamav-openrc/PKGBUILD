@@ -1,0 +1,39 @@
+# Maintainer: artoo <artoo@artixlinux.org>
+
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+
+pkgname=clamav-openrc
+pkgver=20171213
+pkgrel=1
+pkgdesc="OpenRC clamav init script"
+arch=('any')
+url="https://github.com/artix-linux/packages"
+license=('GPL2')
+groups=('openrc-world')
+depends=('openrc' 'clamav')
+conflicts=('systemd-sysvcompat')
+backup=('etc/conf.d/clamd')
+source=("clamd.confd::${_url}/app-antivirus/clamav/files/clamd.conf-r1"
+        "clamd.initd::${_url}/app-antivirus/clamav/files/clamd.initd-r6")
+sha256sums=('28ebd47810b0568fc7692218867d6804a1df70290681462f5555e230ca817732'
+            '7b502b8ca6672ee85d67e6c2e210118b05cee8170ebab4308df192f0f8064de3')
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g')
+    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+}
+
+_inst_confd(){
+    install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+}
+
+package() {
+    _inst_confd 'clamd'
+    _inst_initd 'clamd'
+}

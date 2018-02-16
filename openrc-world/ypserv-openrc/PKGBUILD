@@ -1,0 +1,47 @@
+# Maintainer: artoo <artoo@artixlinux.org>
+
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+
+pkgname=ypserv-openrc
+pkgver=20171213
+pkgrel=1
+pkgdesc="OpenRC ypserv init script"
+arch=('any')
+url="https://github.com/artix-linux/packages"
+license=('GPL2')
+groups=('openrc-world')
+depends=('openrc' 'ypserv')
+conflicts=('systemd-sysvcompat')
+backup=('etc/conf.d/rpc.yppasswdd'
+        'etc/conf.d/rpc.ypxfrd'
+        'etc/conf.d/ypserv')
+source=("ypserv.confd::${_url}/net-nds/ypserv/files/ypserv.confd"
+        "rpc.yppasswdd.confd::${_url}/net-nds/ypserv/files/rpc.yppasswdd.confd"
+        "rpc.ypxfrd.confd::${_url}/net-nds/ypserv/files/rpc.ypxfrd.confd"
+        "ypserv.initd::${_url}/net-nds/ypserv/files/ypserv")
+sha256sums=('4edd475ca95d31cfcea20a8e6268024f8128423bc7ae67edb535e6811c64668e'
+            'e46afe737bfc57aa31be1a441615fcc112e1ebf41d631c1929e00b81baca119d'
+            'bd1f245a362f85319e83965e8b825e66e686a4a0bf185ab8ec51fd335bc873c2'
+            '24d4bfd2d938b3b89ae89067e1249631f2a05a81a95772c82861700039f69ab4')
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g' -e 's|/usr/sbin|/usr/bin|g')
+    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+}
+
+_inst_confd(){
+    install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+}
+
+package() {
+    for f in ypserv rpc.yppasswdd rpc.ypxfrd;do
+        _inst_confd $f
+        _inst_initd $f
+    done
+}

@@ -1,0 +1,39 @@
+# Maintainer: artoo <artoo@artixlinux.org>
+
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+
+pkgname=transmission-openrc
+pkgver=20171213
+pkgrel=1
+pkgdesc="OpenRC transmission init script"
+arch=('any')
+url="https://github.com/artix-linux/packages"
+license=('GPL2')
+groups=('openrc-world')
+depends=('openrc' 'transmission-cli')
+conflicts=('systemd-sysvcompat')
+backup=('etc/conf.d/transmission-daemon')
+source=("transmission-daemon.confd::${_url}/net-p2p/transmission/files/transmission-daemon.confd.4"
+        "transmission-daemon.initd::${_url}/net-p2p/transmission/files/transmission-daemon.initd.10")
+sha256sums=('9065bcf729309aebd48ae2214a461d162924462fb2db51f33aed40dd0c3b4f25'
+            '8925e7b2f59de7c116778fa9a498e8209358117b08870a9208fe37c8b2f01ee5')
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g')
+    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+}
+
+_inst_confd(){
+    install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+}
+
+package() {
+    _inst_confd 'transmission-daemon'
+    _inst_initd 'transmission-daemon'
+}

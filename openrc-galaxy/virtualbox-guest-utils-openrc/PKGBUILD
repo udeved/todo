@@ -1,0 +1,37 @@
+# Maintainer: Rafli Akmal <rafliakmaltejakusuma@gmail.com>
+# Contributor: artoo <artoo@artixlinux.org>
+# Contributor: Oscar Campos <damnwidget@artixlinux.org>
+
+_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+
+pkgname=virtualbox-guest-utils-openrc
+pkgver=20171110
+pkgrel=1
+pkgdesc="OpenRC virtualbox-guest-utils init script"
+arch=('any')
+url="https://github.com/artix-linux/packages-galaxy"
+license=('GPL2')
+groups=('openrc-galaxy')
+depends=('openrc' 'virtualbox-guest-utils')
+conflicts=('systemd-sysvcompat')
+source=("vboxservice.initd::${_url}/app-emulation/virtualbox-guest-additions/files/virtualbox-guest-additions-8.initd")
+sha256sums=('6be7c321b362054aefef183f0c4b8404ea64d4232154756ddc79de1fca067952')
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_initd(){
+    install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+
+    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|vboxguest-service|VBoxService|' -e 's|/sbin/modprobe|/usr/bin/modprobe|g')
+    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+}
+
+_inst_confd(){
+    install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+}
+
+package() {
+    _inst_initd 'vboxservice'
+}
