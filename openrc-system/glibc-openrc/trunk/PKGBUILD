@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=glibc-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC nscd init script"
 arch=('any')
@@ -13,6 +13,7 @@ groups=('openrc-system')
 depends=('openrc' 'glibc')
 conflicts=('systemd-sysvcompat')
 source=("nscd.initd")
+sha256sums=('b1c24e88a369c43b3bb361c6fc983e5d3f162535a119a91a0add5ca30c509c06')
 
 pkgver() {
     date +%Y%m%d
@@ -29,4 +30,3 @@ _inst_confd(){
 package() {
     _inst_initd 'nscd'
 }
-sha256sums=('b1c24e88a369c43b3bb361c6fc983e5d3f162535a119a91a0add5ca30c509c06')

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=xinetd-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC xinetd init script"
 arch=('any')
@@ -15,6 +15,8 @@ conflicts=('systemd-sysvcompat')
 backup=('etc/conf.d/xinetd')
 source=("xinetd.confd::${_url}/sys-apps/xinetd/files/xinetd.confd"
         "xinetd.initd::${_url}/sys-apps/xinetd/files/xinetd.rc6")
+sha256sums=('e401e2cf7c0180a170d3dc3e91d7e98002bae7b013df72813b7bcf89b864fb3a'
+            '6934fee5e3997d7e152c26d0c1a8f8d2f7563287fcc1ae934e4552d523c39329')
 
 pkgver() {
     date +%Y%m%d
@@ -23,8 +25,10 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
@@ -35,6 +39,3 @@ package() {
     _inst_confd 'xinetd'
     _inst_initd 'xinetd'
 }
-
-sha256sums=('e401e2cf7c0180a170d3dc3e91d7e98002bae7b013df72813b7bcf89b864fb3a'
-            '6934fee5e3997d7e152c26d0c1a8f8d2f7563287fcc1ae934e4552d523c39329')

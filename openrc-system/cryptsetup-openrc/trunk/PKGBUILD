@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=cryptsetup-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC cryptsetup init script"
 arch=('any')
@@ -15,6 +15,8 @@ conflicts=('systemd-sysvcompat')
 backup=('etc/conf.d/dmcrypt')
 source=("dmcrypt.confd::${_url}/sys-fs/cryptsetup/files/1.6.7-dmcrypt.confd"
         "dmcrypt.initd::${_url}/sys-fs/cryptsetup/files/1.6.7-dmcrypt.rc")
+sha256sums=('3d933a54abe62a547294b83208dbf5d7615d9c7f380d6504c91fff3620530803'
+            'd04627e1a64e4d86e957b20ff6f478fb376833b7602098a708af9c070e30a980')
 
 pkgver() {
     date +%Y%m%d
@@ -23,8 +25,10 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/sbin|/usr/bin|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
@@ -35,5 +39,3 @@ package() {
     _inst_confd 'dmcrypt'
     _inst_initd 'dmcrypt'
 }
-sha256sums=('3d933a54abe62a547294b83208dbf5d7615d9c7f380d6504c91fff3620530803'
-            'd04627e1a64e4d86e957b20ff6f478fb376833b7602098a708af9c070e30a980')

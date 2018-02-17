@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=dbus-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC dbus init script"
 arch=('any')
@@ -13,6 +13,7 @@ groups=('openrc-system')
 depends=('openrc' 'dbus')
 conflicts=('systemd-sysvcompat')
 source=("dbus.initd::${_url}/sys-apps/dbus/files/dbus.initd-r1")
+sha256sums=('00a1a8f254d4f40b6f98a2777809b9c45ad81c4aeb4c0592793dd839777990bd')
 
 pkgver() {
     date +%Y%m%d
@@ -21,8 +22,10 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|dbus.pid|dbus/pid|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|dbus.pid|dbus/pid|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
@@ -32,4 +35,3 @@ _inst_confd(){
 package() {
     _inst_initd 'dbus'
 }
-sha256sums=('00a1a8f254d4f40b6f98a2777809b9c45ad81c4aeb4c0592793dd839777990bd')

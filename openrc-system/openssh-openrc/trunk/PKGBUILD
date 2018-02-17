@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openssh-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC openssh init script"
 arch=('any')
@@ -15,6 +15,8 @@ conflicts=('systemd-sysvcompat')
 backup=('etc/conf.d/sshd')
 source=("sshd.confd::${_url}/net-misc/openssh/files/sshd.confd"
         "sshd.initd::${_url}/net-misc/openssh/files/sshd.rc6.4")
+sha256sums=('29c6d57ac3ec6018cadc6ba6cd9b90c9ed46e20049b970fdcc68ee2481a2ee41'
+            '43a483014bf177f9238e54a7b8210d5a76830beb67c18999409e543fd744c9e4')
 
 pkgver() {
     date +%Y%m%d
@@ -23,21 +25,18 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args+=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
     install -Dm755 ${srcdir}/$1.confd ${pkgdir}/etc/conf.d/$1
+    sed -e 's|/usr/sbin|/usr/bin|g' -i "${pkgdir}/etc/conf.d/$1"
 }
 
 package() {
     _inst_confd 'sshd'
     _inst_initd 'sshd'
-
-    sed -e 's|/usr/sbin|/usr/bin|g' \
-        -i "${pkgdir}/etc/conf.d/sshd"
 }
-
-sha256sums=('29c6d57ac3ec6018cadc6ba6cd9b90c9ed46e20049b970fdcc68ee2481a2ee41'
-            '43a483014bf177f9238e54a7b8210d5a76830beb67c18999409e543fd744c9e4')

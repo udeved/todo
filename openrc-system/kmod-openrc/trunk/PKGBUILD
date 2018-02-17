@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=kmod-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC kmod init script"
 arch=('any')
@@ -13,6 +13,7 @@ groups=('openrc-system')
 depends=('openrc' 'kmod')
 conflicts=('systemd-sysvcompat')
 source=('kmod-static-nodes.initd')
+sha256sums=('3ecbe7761b92a123a5a3d395ec3d9e090b0dfba7910a5987b4a2298c20a7e571')
 
 pkgver() {
     date +%Y%m%d
@@ -21,8 +22,9 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
@@ -35,5 +37,3 @@ package() {
     install -d "${pkgdir}/etc/runlevels/sysinit"
     ln -sf "/etc/init.d/kmod-static-nodes" "${pkgdir}/etc/runlevels/sysinit/kmod-static-nodes"
 }
-
-sha256sums=('3ecbe7761b92a123a5a3d395ec3d9e090b0dfba7910a5987b4a2298c20a7e571')

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lvm2-openrc
-pkgver=20171002
+pkgver=20180216
 pkgrel=1
 pkgdesc="OpenRC lvm2 init script"
 arch=('any')
@@ -18,6 +18,10 @@ source=("lvm.confd::${_url}/sys-fs/lvm2/files/lvm.confd-2.02.28-r2"
         "lvm-monitoring.initd::${_url}/sys-fs/lvm2/files/lvm-monitoring.initd-2.02.105-r2"
         "lvmetad.initd::${_url}/sys-fs/lvm2/files/lvmetad.initd-2.02.116-r3")
 #         "lvmlockd.initd::${_url}/sys-fs/lvm2/files/lvmlockd.initd-2.02.166-r1")
+sha256sums=('28370c089c39c248d7ded0960b8d8a9256bada44d44c22ce3cec87d512ef6844'
+            '499fae740d7740895842e2a6db8736272ceacf2d4b6f57f00a8ff91b7993d1da'
+            '42847d8e6dabbcf2cc19846c6ad22cbab65e9a033c4add569b152504b16ab477'
+            'e7f17004d505eae5d8a2fb336b22f1cdb20bb2ecf85a98daf2485bb4b0d4ff12')
 
 pkgver() {
     date +%Y%m%d
@@ -26,8 +30,10 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/sbin|/usr/bin|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/sbin|/usr/bin|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
@@ -42,7 +48,4 @@ package() {
     done
 }
 
-sha256sums=('28370c089c39c248d7ded0960b8d8a9256bada44d44c22ce3cec87d512ef6844'
-            '499fae740d7740895842e2a6db8736272ceacf2d4b6f57f00a8ff91b7993d1da'
-            '42847d8e6dabbcf2cc19846c6ad22cbab65e9a033c4add569b152504b16ab477'
-            'e7f17004d505eae5d8a2fb336b22f1cdb20bb2ecf85a98daf2485bb4b0d4ff12')
+

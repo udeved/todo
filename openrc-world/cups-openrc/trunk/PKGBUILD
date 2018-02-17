@@ -17,14 +17,18 @@ source=("cupsd.initd::${_url}/net-print/cups/files/cupsd.init.d-r2")
 sha256sums=('54b86ec2d7086004cde4e8b69aa49b7334718cad42a4426382f56269bb0f5a78')
 
 pkgver() {
-	date +%Y%m%d
+    date +%Y%m%d
 }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g' -e 's|lp:lpadmin|daemon:sys|' -e 's|@neededservices@|need dbus avahi-daemon|')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -e 's|lp:lpadmin|daemon:sys|' \
+        -e 's|@neededservices@|need dbus avahi-daemon|' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){

@@ -19,14 +19,17 @@ sha256sums=('3cf1ab72446cb9417de916e4cd732f2056fb74d2c6f03da6741b7bae8c415448'
             'a1a25bd66fa2edac593e77c5469e110466b7d8dc1bfa3f72a49c7117196986a4')
 
 pkgver() {
-	date +%Y%m%d
+    date +%Y%m%d
 }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/etc/bind/named.conf|/etc/named.conf|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -e 's|/etc/bind/named.conf|/etc/named.conf|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){

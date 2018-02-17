@@ -27,14 +27,17 @@ sha256sums=('e8a413e9102948b336f60041fc3cade33125faf56d8319ee65d9f3c63199a8e7'
             '87082ebc37a969d2b7e658f155f96990c57ecb60c5fc23edee25afa9d247bd68')
 
 pkgver() {
-	date +%Y%m%d
+    date +%Y%m%d
 }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|/opt/bin|/usr/bin|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|#@slapd@|ldap slapd|')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -e 's|#@slapd@|ldap slapd|' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
