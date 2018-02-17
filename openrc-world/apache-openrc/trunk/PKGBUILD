@@ -26,6 +26,7 @@ pkgver() {
 _inst_initd(){
     install -Dm755 "${srcdir}/gentoo-apache-${_apver}/init/apache2.initd" "${pkgdir}/etc/init.d/httpd"
     sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|' \
+        -e 's|/var/run|/run|' \
         -e 's|/usr/sbin/apache2|/usr/bin/apachectl|' \
         -e 's|/etc/apache2/httpd.conf|/etc/httpd/conf/httpd.conf|' \
         -e 's/! test -f/test -f/' \
@@ -42,6 +43,7 @@ _inst_confd(){
         -e 's|/usr/lib/apache2|/usr/lib/httpd|' \
         -e 's|apache2.pid|httpd/httpd.pid|' \
         -e 's|apache2|httpd|g' \
+        -e 's|/var/run|/run|' \
         -i "${pkgdir}/etc/conf.d/httpd"
 }
 
