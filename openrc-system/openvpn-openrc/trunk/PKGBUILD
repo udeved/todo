@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openvpn-openrc
-pkgver=20180216
+pkgver=20180217
 pkgrel=1
 pkgdesc="OpenRC openvpn init script"
 arch=('any')

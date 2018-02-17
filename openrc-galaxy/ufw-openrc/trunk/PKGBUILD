@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=ufw-openrc
-pkgver=20171110
+pkgver=20180217
 pkgrel=1
 pkgdesc="OpenRC ufw init script"
 arch=('any')

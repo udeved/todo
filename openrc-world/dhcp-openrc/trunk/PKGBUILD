@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=dhcp-openrc
-pkgver=20171213
+pkgver=20180217
 pkgrel=1
 pkgdesc="OpenRC dhcp init script"
 arch=('any')

@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openntpd-openrc
-pkgver=20171110
+pkgver=20180217
 pkgrel=1
 pkgdesc="OpenRC openntpd init script"
 arch=('any')
@@ -28,7 +28,6 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=()
     sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
         -e 's|/var/run|/run|g' \
         -e 's|/usr/sbin|/usr/bin|g' \

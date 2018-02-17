@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=iptables-openrc
-pkgver=20180216
+pkgver=20180217
 pkgrel=1
 pkgdesc="OpenRC iptables init script"
 arch=('any')
@@ -28,7 +28,6 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=()
     sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
         -e 's|/var/run|/run|g' \
         -e 's|/sbin|/usr/bin|g' \
