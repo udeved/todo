@@ -24,8 +24,12 @@ pkgver() {
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-    local _sed_args=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' -e 's|/var/run|/run|g' -e 's|/usr/sbin|/usr/bin|g' -e 's|vboxguest-service|VBoxService|' -e 's|/sbin/modprobe|/usr/bin/modprobe|g')
-    sed ${_sed_args[@]} -i ${pkgdir}/etc/init.d/$1
+    sed -e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g' \
+        -e 's|/var/run|/run|g' \
+        -e 's|/usr/sbin|/usr/bin|g' \
+        -e 's|vboxguest-service|VBoxService|' \
+        -e 's|/sbin/modprobe|/usr/bin/modprobe|g' \
+        -i ${pkgdir}/etc/init.d/$1
 }
 
 _inst_confd(){
