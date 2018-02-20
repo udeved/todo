@@ -6,7 +6,7 @@ _aprel="20160303"
 _apver="2.4.18-r1"
 
 pkgname=apache-openrc
-pkgver=20180217
+pkgver=20180220
 pkgrel=1
 pkgdesc="OpenRC apache init script"
 arch=('any')

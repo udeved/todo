@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=samba-openrc
-pkgver=20180217
+pkgver=20180220
 pkgrel=1
 pkgdesc="OpenRC samba init script"
 arch=('any')

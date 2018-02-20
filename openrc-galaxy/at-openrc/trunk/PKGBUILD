@@ -7,12 +7,14 @@ _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 pkgname=at-openrc
 pkgver=20180217
 pkgrel=1
-pkgdesc="OpenRC init scripts"
+pkgdesc="OpenRC at init script"
 arch=('any')
 url="https://github.com/artix-linux/packages-galaxy"
 license=('GPL2')
 groups=('openrc-galaxy')
+depends=('openrc' 'at')
 conflicts=('systemd-sysvcompat')
+backup=('etc/conf.d/atd')
 source=("atd.confd::${_url}/sys-process/at/files/atd.confd"
         "atd.initd::${_url}/sys-process/at/files/atd.rc8")
 sha256sums=('ece01506efa6d73d7cbe9bc1da6eb1afc4d63451ab1fccf5051178b6e937d68e'
@@ -38,10 +40,6 @@ _inst_confd(){
 }
 
 package() {
-    pkgdesc="OpenRC at init script"
-    depends=('openrc' 'at')
-    backup=('etc/conf.d/atd')
-
     _inst_confd 'atd'
     _inst_initd 'atd'
 }

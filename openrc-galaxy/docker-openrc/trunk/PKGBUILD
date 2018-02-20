@@ -2,7 +2,7 @@
 # Contributor: artoo <artoo@artixlinux.org>
 # Contributor: Oscar Campos <damnwidget@artixlinux.org>
 
-_url="https://raw.githubusercontent.com/gentoo/gentoo/master"
+_url="https://raw.githubusercontent.com/docker/docker-ce/master/components/engine/contrib/init/openrc"
 
 pkgname=docker-openrc
 pkgver=20180217
@@ -15,8 +15,8 @@ groups=('openrc-galaxy')
 depends=('openrc' 'docker')
 conflicts=('systemd-sysvcompat')
 backup=('etc/conf.d/docker')
-source=("docker.confd::https://raw.githubusercontent.com/docker/docker-ce/master/components/engine/contrib/init/openrc/docker.confd"
-        "docker.initd::https://raw.githubusercontent.com/docker/docker-ce/master/components/engine/contrib/init/openrc/docker.initd")
+source=("docker.confd::${_url}/docker.confd"
+        "docker.initd::${_url}/docker.initd")
 sha256sums=('89ac9f1c389dd570deb9bc6128886df8924f7a1a3e2e5e66437e21ccba76d06b'
             'af1cb0f7cd6c4481bc023462d3a45d32e0975476cf881d543ecfb51c77c8c01c')
 

@@ -7,12 +7,14 @@ _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 pkgname=libvirt-openrc
 pkgver=20180217
 pkgrel=1
-pkgdesc="OpenRC init scripts"
+pkgdesc="OpenRC libvirt init script"
 arch=('any')
 url="https://github.com/artix-linux/packages-galaxy"
 license=('GPL2')
 groups=('openrc-galaxy')
+depends=('openrc' 'libvirt')
 conflicts=('systemd-sysvcompat')
+backup=('etc/conf.d/libvirtd')
 source=("libvirtd.confd::${_url}/app-emulation/libvirt/files/libvirtd.confd-r5"
         "libvirtd.initd::${_url}/app-emulation/libvirt/files/libvirtd.init-r16"
         "virtlockd.initd::${_url}/app-emulation/libvirt/files/virtlockd.init-r1"
@@ -44,10 +46,6 @@ _inst_confd(){
 }
 
 package() {
-    pkgdesc="OpenRC libvirt init script"
-    depends=('openrc' 'libvirt')
-    backup=('etc/conf.d/libvirtd')
-
     _inst_confd 'libvirtd'
     _inst_initd 'libvirtd'
     _inst_initd 'virtlockd'

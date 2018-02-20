@@ -15,9 +15,9 @@ groups=('openrc-galaxy')
 depends=('openrc' 'salt')
 conflicts=('systemd-sysvcompat')
 backup=('etc/conf.d/salt-master'
-            'etc/conf.d/salt-minion'
-            'etc/conf.d/salt-syncdic'
-            'etc/conf.d/salt-api')
+        'etc/conf.d/salt-minion'
+        'etc/conf.d/salt-syncdic'
+        'etc/conf.d/salt-api')
 source=("salt-master.confd::${_url}/app-admin/salt/files/master-confd-1"
         "salt-master.initd::${_url}/app-admin/salt/files/master-initd-4"
         "salt-minion.confd::${_url}/app-admin/salt/files/minion-confd-1"
