@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=rpcbind-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC rpcbind init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("rpcbind.confd::${_url}/net-nds/rpcbind/files/rpcbind.confd"
 sha256sums=('38bb95aefc38d843d0890d9c15affd28f19f2133c17f463396c62970e7e2dffc'
             'da992f87b5043e22dfd340b4a5440b76dce29cc14d3ef7b0ce586726fe4b220b')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

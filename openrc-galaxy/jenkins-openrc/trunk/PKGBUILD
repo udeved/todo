@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=jenkins-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC jenkins init script"
 arch=('any')
@@ -22,9 +22,9 @@ sha256sums=('ce7cdba0316614a32707b4b9ec3ee0d229738b3b23d073bbe3b5960e627bdadb'
             'bdfb041cdcfbf503c749f29edca2a97d5e3ef81a0d988724e6d5c187023d73d1'
             '03dcaccbb0d398c2b600be0752ffc68d20c877b58a10026b7c59b0bd40c0e5bf')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

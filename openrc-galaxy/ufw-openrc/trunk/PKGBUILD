@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=ufw-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC ufw init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("ufw.confd::${_url}/net-firewall/ufw/files/ufw.confd"
 sha256sums=('069aa7382b40aecebf26ef53f3f4c49890314e0357925c84b3c15f1d0b913be0'
             '7d668989a96d47cb5a9f71ae2e6000b469be6d1786f9cf3809b28461d42308ea')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

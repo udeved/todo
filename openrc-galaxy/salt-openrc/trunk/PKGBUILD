@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=salt-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC salt init scripts"
 arch=('any')
@@ -35,9 +35,9 @@ sha256sums=('9f3f47a7af4d349a7c525455616139b5019d3b7d0290398ba8c50ab91a62d089'
             '9f3f47a7af4d349a7c525455616139b5019d3b7d0290398ba8c50ab91a62d089'
             'e673f359ff7fbb012d9eb5d6c3db841668e3692b15b07faeb6352feb5cfbb2b1')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

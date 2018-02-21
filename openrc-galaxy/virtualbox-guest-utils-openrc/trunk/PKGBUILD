@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=virtualbox-guest-utils-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC virtualbox-guest-utils init script"
 arch=('any')
@@ -17,9 +17,9 @@ conflicts=('systemd-sysvcompat')
 source=("vboxservice.initd::${_url}/app-emulation/virtualbox-guest-additions/files/virtualbox-guest-additions-8.initd")
 sha256sums=('6be7c321b362054aefef183f0c4b8404ea64d4232154756ddc79de1fca067952')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=pdnsd-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC pdnsd init script"
 arch=('any')
@@ -17,9 +17,9 @@ conflicts=('systemd-sysvcompat')
 source=("pdnsd.initd::${_url}/net-dns/pdnsd/files/pdnsd.rc8")
 sha256sums=('27b7bd5c0ec3bb026ccd2e47e7ac6f87869a9820bf4ba85a99d7cd4b1a3b826a')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

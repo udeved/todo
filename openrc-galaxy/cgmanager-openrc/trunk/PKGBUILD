@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=cgmanager-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC cgmanager init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("cgproxy.initd::${_url}/app-admin/cgmanager/files/cgproxy.initd-r1"
 sha256sums=('97220fa0af6dcaa9d2cb726620ee3de8e216e55bab37cea40e5ed010ed637e35'
             'f162685428a6593630daf5d636c198caf4992843ced977dc6d7288b7559a062c')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

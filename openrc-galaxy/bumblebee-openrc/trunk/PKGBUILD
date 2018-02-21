@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=bumblebee-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC bumblebee init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("bumblebee.confd::${_url}/x11-misc/bumblebee/files/bumblebee.confd"
 sha256sums=('9e0287f542cff0fd3452a0c3d6d427a3404706c93ac9a00f4d99fe52ed596d75'
             '5c67465ca9a2d4dc6fd35a7827d82ea6d72b13a8e93373e9055970fc71754b18')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

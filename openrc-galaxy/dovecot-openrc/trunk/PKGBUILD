@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=dovecot-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC dovecot init script"
 arch=('any')
@@ -17,9 +17,9 @@ conflicts=('systemd-sysvcompat')
 source=("dovecot.initd::${_url}/net-mail/dovecot/files/dovecot.init-r4")
 sha256sums=('54f6710ea0560db3e62fb910662d8bbce71b330067dc856d17777115658f086c')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

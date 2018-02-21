@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=rng-tools-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC rng-tools init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("rngd.confd::${_url}/sys-apps/rng-tools/files/rngd-confd-4.1"
 sha256sums=('cdbd39f7446f12a9b78e87e9f135cfd0f6f364c4fa4ade0c96084b85c32afc38'
             '3ad9a52d86e54eb755923242b1314584d5c66ab55221f6063a16c23477957a25')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

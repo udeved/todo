@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=polipo-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC polipo init script"
 arch=('any')
@@ -17,9 +17,9 @@ conflicts=('systemd-sysvcompat')
 source=("polipo.initd::${_url}/net-proxy/polipo/files/polipo.initd-5")
 sha256sums=('81c0bf86e26770ae9e522fcce86ab05528d37ce8ad3ce1bcf17250bbd0285a6a')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

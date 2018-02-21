@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=toxcore-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC tox init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("tox.confd::${_url}/net-libs/tox/files/confd"
 sha256sums=('eb0aa3b25232a64971c6b39799c384577cf85ffe16ec41119b6b4e8336649cd5'
             '88fac7885b62e4aef89b2be52496912752c3bc14f543b6c4330a1077a31d5867')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

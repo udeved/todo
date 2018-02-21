@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=grafana-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC grafana init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("grafana.confd::${_url}/www-apps/grafana-bin/files/grafana.confd"
 sha256sums=('5b9e125f2648ed98125097770b609dcce543443f0862b99c0653f55b3b9be895'
             '0f898484e081a416429d4a881c99988aea6a9d9d2085b326c5dd1e85163cbb39')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

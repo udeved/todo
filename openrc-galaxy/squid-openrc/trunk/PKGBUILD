@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=squid-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC squid init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("squid.confd::${_url}/net-proxy/squid/files/squid.confd-r1"
 sha256sums=('507d8f26bdb7227c39ed0641429d32972513e4240bf59a20b076e8019201b20d'
             '8a1369aab5cef61d19ea61c373819bd4eeabd2ba4c70f831e5009891993f3a4f')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

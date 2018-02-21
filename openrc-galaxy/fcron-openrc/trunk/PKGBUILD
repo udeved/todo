@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=fcron-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC fcron init script"
 arch=('any')
@@ -18,9 +18,9 @@ conflicts=('cronie' 'cronie-openrc' 'systemd-sysvcompat')
 source=("fcron.initd::${_url}/sys-process/fcron/files/fcron.init.4")
 sha256sums=('e193623b14a421fba86f0f5f10d6ac95de02d27239b117050a1eeccabe08aa06')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

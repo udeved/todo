@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=elogind-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC elogind init script"
 arch=('any')
@@ -17,9 +17,9 @@ source=("elogind.confd::${_url}/sys-auth/elogind/files/elogind.conf.in"
 sha256sums=('ed2b6b9c659d7661cba043fefe38aa5c7d7c910fc50060c6a4be0ef5b75b7376'
             '982423a88eea889c194123ecffbdea03d8f94ca497b7b32bd86fdf20a81680c7')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

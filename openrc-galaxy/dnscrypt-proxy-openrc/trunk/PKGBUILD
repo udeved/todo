@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=dnscrypt-proxy-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC dnscrypt-proxy init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("dnscrypt-proxy.confd::${_url}/net-dns/dnscrypt-proxy/files/dnscrypt-pro
 sha256sums=('38ef436a17975031974166b32fe98ccb78e13c901a753d0e1af5c73b8e1831be'
             'f7dd88344479ebaa945eb9f01f14649e71ebfdba1ac56eeed7a46ea6c43c1f0a')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

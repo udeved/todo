@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=gitlab-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC gitlab init scripts"
 arch=('any')
@@ -33,9 +33,9 @@ sha256sums=('50c1ed3272e056ca74242e5ff395785e3bec78ac1ea403aa4a2a5e72c6f57609'
             'e16621643cdb4225d4ea77f81dffeb9180b62c80f2ef6f304e9423b499e49ffe'
             'f891b336afe3fdb992821fe3f4facb95263987f8ffd61de06cb3622930bb938d')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

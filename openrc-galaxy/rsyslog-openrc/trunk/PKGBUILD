@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=rsyslog-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC rsyslog init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("rsyslog.confd::${_url}/app-admin/rsyslog/files/8-stable/rsyslog.confd-r
 sha256sums=('0be3575df8010523de6b37e98c417192e8ec481292ca9fb47c8d2211795e03a6'
             '93044cc5fc344cd90d17cbb5cebee3c60ebf674e53c8b9efc6e758d53912d343')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=iptables-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC iptables init script"
 arch=('any')
@@ -21,9 +21,9 @@ sha256sums=('7e2341211ca14997b7a8a1f930f94db855291af597c568f680f80031c20d45b6'
             '2938fe4206514d9868047bd8f888a699fa2097ca69edab176453436d4259abaa'
             '2c9dcf73db7740350d41504633671e95287a349838acd5faa6d3b27418c9d6d0')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

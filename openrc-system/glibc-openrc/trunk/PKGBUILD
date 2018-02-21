@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=glibc-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC nscd init script"
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('systemd-sysvcompat')
 source=("nscd.initd")
 sha256sums=('b1c24e88a369c43b3bb361c6fc983e5d3f162535a119a91a0add5ca30c509c06')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

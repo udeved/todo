@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=xe-guest-utilities-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC xe-guest-utilities init script"
 arch=('any')
@@ -17,9 +17,9 @@ conflicts=('systemd-sysvcompat')
 source=("xe-daemon.initd::${_url}/app-emulation/xe-guest-utilities/files/xe-daemon.initd")
 sha256sums=('c65e8f0354364f32e87bee2922979cb09ea680ad6baae48a910a10d39b850987')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

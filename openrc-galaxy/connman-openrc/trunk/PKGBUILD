@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=connman-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC connman init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("connman.confd::${_url}/net-misc/connman/files/connman.confd"
 sha256sums=('767a160c1b3392f0a12d3908a937548a2f604a9a121e744c309ee6f478420b02'
             '4c018df1b53b142a2e26c456b0bf6cc7039fb3851bc5f567e59654117930a78b')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

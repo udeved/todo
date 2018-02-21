@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lvm2-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC lvm2 init script"
 arch=('any')
@@ -23,9 +23,9 @@ sha256sums=('28370c089c39c248d7ded0960b8d8a9256bada44d44c22ce3cec87d512ef6844'
             '42847d8e6dabbcf2cc19846c6ad22cbab65e9a033c4add569b152504b16ab477'
             'e7f17004d505eae5d8a2fb336b22f1cdb20bb2ecf85a98daf2485bb4b0d4ff12')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

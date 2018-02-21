@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=espeakup-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC espeakup init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("espeakup.confd::${_url}/app-accessibility/espeakup/files/espeakup.confd
 sha256sums=('32e6de11417ebb199a7bf46eb8cf77054b1af1c9f4bcc80b856b34758830eb9f'
             '9bfaf3950744a9376cdd74240c3e6b9a92d7b17a16a3b9eb0485f5fd279ff963')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

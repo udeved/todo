@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=vsftpd-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC vsftpd init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("${_url}/net-ftp/vsftpd/files/vsftpd-checkconfig.sh"
 sha256sums=('2de7c7c1edfe3ae0480e22d988a564db3bb873050929ebb6e8361d7a1288ddda'
             '46dba1df0fb5d575d6d37ed54aa887d9a5fa8853bc46b2b0bd18f9fab2a27640')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=nfs-utils-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC nfs-utils init script"
 arch=('any')
@@ -35,9 +35,9 @@ sha256sums=('c652a4fe8a43dc68a818345db2b3acc560663b5b6c969324d4f23afb0fb96a94'
             '6f3d93442db0c17436547a16155e0d61dd5cd17f49fd3a642a9a5de833411d51'
             'ef7eec0fd1921f786580169628c9cc7af82c73d0b2cf420fba0e87f8fd428651')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=hostapd-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC hostapd init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("hostapd.confd::${_url}/net-wireless/hostapd/files/hostapd-conf.d"
 sha256sums=('916f4b14095ee4ec8a510391c883e9f01868e18d79a3d5cbeb13a104a793d45d'
             '3678565083106e698ca30c305c4561152a2b043fe894b8b773b28a0bb273411e')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

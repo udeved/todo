@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=sshguard-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC SSHGuard init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("sshguard.confd::${_url}/app-admin/sshguard/files/sshguard.confd"
 sha256sums=('ee121f8c4c045ba1cfa67a173040358b1ea5c0561427d64dbd1092a24f068519'
             '759ef54c0f54a27023020ff8da7811b38459a194d7d75d15ea88f7609b2a013c')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

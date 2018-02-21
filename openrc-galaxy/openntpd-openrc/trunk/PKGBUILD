@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openntpd-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC openntpd init script"
 arch=('any')
@@ -21,9 +21,9 @@ source=("ntpd.confd::${_url}/net-misc/openntpd/files/openntpd.conf.d-20080406-r6
 sha256sums=('40803821f498267f6567436eedc18201b5ae4b5390d6872fb15a94200c2ac06f'
             'cdccb5f0009d1498be90a3f423158d7a3c603a1398f8993ae6fb828224a7cdaa')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

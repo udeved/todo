@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=cpupower-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC cpupower init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("cpupower.confd::${_url}/sys-power/cpupower/files/conf.d-r2"
 sha256sums=('9ab6f022d2b2948660decf5e383984e6ddb9e9e5e6e2761c3031378ddd87e947'
             'c8c092fa80da7c312430389ae06ff7874d651d8e7b6c28236ee5c8d8d3557d9d')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

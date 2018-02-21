@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=redis-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC redis init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("redis.confd::${_url}/dev-db/redis/files/redis.confd"
 sha256sums=('8c68e29dc88c8ad99b9212a448d313d1406ef02c7638398b2e48ea1ca8aa937b'
             '94257e625ee8c0212dd8afdaa9871796f9944a3ee68641cbde902a1a8a9c6fa9')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

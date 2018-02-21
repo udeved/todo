@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openvpn-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC openvpn init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("openvpn.confd::${_url}/net-vpn/openvpn/files/openvpn-2.1.conf"
 sha256sums=('330149a83684ddabe413d134d4c8efad4c88b18c2ab67165014deff5f7fffad2'
             '89f69bcd627868830c421bc6270f08a1c3edf1a1e5fbdedf33c7a7d530bdfccf')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=znc-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC ZNC init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("znc.confd::${_url}/net-irc/znc/files/znc.confd-r1"
 sha256sums=('69238e187b86c4c15d0751a28d6710e3b21fdd19627b28d5ee09009dc1d95b01'
             'ad19b0de6bd3616b6396b97eeddb4620d57de5aa5a399a3004bef78266140645')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=apcupsd-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC apcupsd init script"
 arch=('any')
@@ -19,9 +19,9 @@ source=("apcupsd.initd::${_url}/sys-power/apcupsd/files/apcupsd.init.4"
 sha256sums=('a43fe46b55d938a5402d6c83235adfc5d488cdd797b6ad722d6156eb711ab688'
             'edd81aa8249c6f3ec1749c61ec464219380ddb5f2d3667a619ce8a0fdb6905c1')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

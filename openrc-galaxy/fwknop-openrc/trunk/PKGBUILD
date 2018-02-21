@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=fwknop-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC fwknop init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("fwknop.confd::${_url}/net-firewall/fwknop/files/fwknopd.confd"
 sha256sums=('818366d8012cf50771ab427bcf645de697e7d05e4bb80d5eb2f98291e071d510'
             'ace9569324d049a226d09c91373644c0181e7f714eebd5bacd13c04e2d5fa093')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

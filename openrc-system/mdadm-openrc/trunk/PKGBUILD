@@ -4,7 +4,7 @@ _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 
 pkgname=mdadm-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC mdadm init script"
 arch=('any')
@@ -23,9 +23,9 @@ sha256sums=('ec55674955af7a31da51b8b72b599e8519809287dad796a9b16155bcba471b79'
             'b489ced10391d4295bb8ca29e128b0d4217c290f1b4e37b05f5a9275048d289d'
             '31e7ba4174f38c05e939aa56fab8a43a3e371ba9e503e029887c99fed7a28331')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

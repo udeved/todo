@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=tor-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC tor init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("tor.confd::${_url}/net-vpn/tor/files/tor.confd"
 sha256sums=('41d780f291847e19f632428bbf27c3f289414afd237546d2974da1b75384c25c'
             'b637006715ab1cb0b321dc9e703b1dcaf61878c13134669eabebe4b422da96d3')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openldap-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC openldap init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("slapd.confd::${_url}/net-nds/openldap/files/slapd-confd-2.4.28-r1"
 sha256sums=('5bca003ec3b67c7c78519aede1d82002579006ccfecce8f87b559df719f82e92'
             'bcd84fca8efc1eec3aea489f238b51ce7226ffcdb1562044e48106897bc5a6fc')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

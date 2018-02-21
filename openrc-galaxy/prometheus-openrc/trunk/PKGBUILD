@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=prometheus-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC prometheus init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("prometheus.confd::${_url}/net-analyzer/prometheus/files/prometheus.conf
 sha256sums=('940f1a3ad08f0eb370951b1a42c29a9217cba9ae2f5cb6cc675bdec1d51e8309'
             '3f17a26f1bf3e16e6828ecce6b8919a7f91f54ed88092d2c2b943b1a70b8fcb4')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

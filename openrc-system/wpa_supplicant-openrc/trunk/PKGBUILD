@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=wpa_supplicant-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC wpa_supplicant init script"
 arch=('any')
@@ -22,9 +22,9 @@ sha256sums=('61ec59007f66ac5bacc0aa095d1f2ccbc977a687038e161a463d1727223d5a90'
             'f3aa34b99a90213c53496f8ea014c487266338791f3526043a7fd97adc651fc6'
             'e401e2cf7c0180a170d3dc3e91d7e98002bae7b013df72813b7bcf89b864fb3a')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

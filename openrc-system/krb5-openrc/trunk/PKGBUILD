@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=krb5-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC krb5 init script"
 arch=('any')
@@ -19,9 +19,9 @@ sha256sums=('0b3b5bcfdb5010d20e3d4457f4128a4fb9f2d91261bfcf489601b1c714f9d815'
             '30572eeec9013fbfb6170f2b0bd1016582d2664268e4019fa8e2edd41e52919d'
             'bf8539b70561d9eb495f55141a5295a8c2e8246af4d1990af94e98be952dcdf9')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

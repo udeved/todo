@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=unbound-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC unbound init script"
 arch=('any')
@@ -20,9 +20,9 @@ source=("unbound.confd::${_url}/net-dns/unbound/files/unbound.confd"
 sha256sums=('7da812ef83f8f8b9351363525ab6bebd5348faed76d0ae424dcbd7cb6a830dfd'
             'fe18b49ea3c50bf17343581599953dac1cc190d1ea9aab1e69eab0b295420c76')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openssh-openrc
-pkgver=20180217
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC openssh init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("sshd.confd::${_url}/net-misc/openssh/files/sshd.confd"
 sha256sums=('29c6d57ac3ec6018cadc6ba6cd9b90c9ed46e20049b970fdcc68ee2481a2ee41'
             '43a483014bf177f9238e54a7b8210d5a76830beb67c18999409e543fd744c9e4')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
