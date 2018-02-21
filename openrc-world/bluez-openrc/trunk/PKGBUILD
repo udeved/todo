@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=bluez-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC bluez init script"
 arch=('any')
@@ -17,9 +17,9 @@ source=("rfcomm.initd::${_url}/net-wireless/bluez/files/rfcomm-init.d-r2"
 sha256sums=('0bd7f4a3e05c781f4cd24ef7d6702fbd7e621100bcd1e281f0ee15bb134f96b5'
             '7fef67f1f0965aa08fd65408d2cd8c3fcefaec0ef627a2a0e1f1372c15e011b2')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

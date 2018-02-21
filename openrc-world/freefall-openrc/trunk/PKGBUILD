@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=freefall-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC freefall init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("freefall.confd::${_url}/sys-apps/linux-misc-apps/files/freefall.confd"
 sha256sums=('3ed6f497dbb8f6b8a65f369b74d04a826a1b0463b344ce5d1b2000d97f4d5471'
             '9959046202c21ca157aa542071925683d4b0836e9c5b29b92416eb513b1c44d2')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

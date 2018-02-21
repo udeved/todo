@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=mpd-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC mpd init script"
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('systemd-sysvcompat')
 source=("mpd.initd::${_url}/media-sound/mpd/files/mpd2.init")
 sha256sums=('6ca354f8b8c4b0e8595f7dbda1058fd471a6b538469ea10e7caf8e7f263f621a')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

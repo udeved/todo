@@ -6,7 +6,7 @@ _aprel="20160303"
 _apver="2.4.18-r1"
 
 pkgname=apache-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC apache init script"
 arch=('any')
@@ -19,9 +19,9 @@ backup=('etc/conf.d/httpd')
 source=("${_url}/gentoo-apache-${_apver}-${_aprel}.tar.bz2")
 sha256sums=('d81e32d876594b48a7ff6d9123bf776c5bea5453eddd2fe40f4a9b79c11537aa')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 "${srcdir}/gentoo-apache-${_apver}/init/apache2.initd" "${pkgdir}/etc/init.d/httpd"

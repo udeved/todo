@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lighttpd-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC lighttpd init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("lighttpd.confd::${_url}/www-servers/lighttpd/files/lighttpd.confd"
 sha256sums=('0be7c9c04ce508cbefb3e913951d83c5ed7f0e01fe5aebcf3a5071f30ef3dbc2'
             'aceed021f24b817347fdf216ccc61e7f34cb8fd831a377c2fbbf1230873498e2')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

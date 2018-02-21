@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=openslp-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC openslp init script"
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('systemd-sysvcompat')
 source=("slpd.initd::${_url}/net-libs/openslp/files/slpd-init")
 sha256sums=('903fdfdd8a5b482af011fc12f9050a9afceac09e4eed9e9cd4fa58240ab61349')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

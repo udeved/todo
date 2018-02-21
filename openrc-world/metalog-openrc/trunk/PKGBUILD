@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=metalog-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC metalog init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("metalog.confd::${_url}/app-admin/metalog/files/metalog.confd"
 sha256sums=('dd9d30a6c22dca6d072a9c63e1494d3d0a26709a5f045ce5985642933fe24efc'
             '78e372a0c04c36e590a66d0750083fcb6302159eaae06a81c19a379e6115087e')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lm_sensors-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC lm_sensors init script"
 arch=('any')
@@ -28,9 +28,9 @@ sha256sums=('0ce54c9c9055165ed87a348fa6a967a62ee228a0e1a42193bb577cd47d6cb0b0'
             '148c840ba5e701f6983bba2ebae6a087e8bf3e2b8276f09bc03ae3eadc011220'
             '3dadb7445091d5a3ad0cef2b6c10e32b6372820e5558d49195ce68771a9e1272')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

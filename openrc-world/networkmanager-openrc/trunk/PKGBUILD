@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=networkmanager-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC networkmanager init script"
 arch=('any')
@@ -20,9 +20,9 @@ sha256sums=('4594573f01fe5e04b6dde4525796acf909158591bdcefd662ec23fe0d1c3e1bd'
             '861445d46e8863dca26a91018da3dd9fee6a64467a93e7512774dfd88914539d'
             '1535237db113a76261d6f1ce0b24a55e956934b0c1c59e9fd624f621961327b6')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

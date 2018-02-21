@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lirc-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC lirc init script"
 arch=('any')
@@ -25,9 +25,9 @@ sha256sums=('d36ff77fa193a065d25e373723e03f1a9471205151b82c73a6574cce4f095962'
             '1eb5123f9876dff17367e78940a7442de6b5cae55e0eb4969f5985cc78261a03'
             '47a9b3500c51c147ac64a8c0cc0dda3945522269e26c513399d89efbbb3c7098')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

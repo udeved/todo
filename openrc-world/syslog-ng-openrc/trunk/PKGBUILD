@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=syslog-ng-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC syslog-ng init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("syslog-ng.confd::${_url}/app-admin/syslog-ng/files/3.7/syslog-ng.confd"
 sha256sums=('b29325498ee3b1f3d63672efcd1e93f0745eecdb9f4bb05fed82a2f085399484'
             '5c4ad3406fc885555883de0537614034de181d783bcb1e864bff6299ac6c1356')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

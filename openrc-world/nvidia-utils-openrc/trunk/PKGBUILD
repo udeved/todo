@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=nvidia-utils-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC nvidia persistence daemon init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("nvidia-persistenced.confd::${_url}/x11-drivers/nvidia-drivers/files/nvi
 sha256sums=('347437868119e8ae12852a574597936e855f534a9ad290fef3f62b4083a38516'
             '17664ed958b1d7706e5151201f784d755c60e66239229d2988e186b649756465')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

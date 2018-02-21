@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=displaymanager-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC display manager init script"
 arch=('any')
@@ -25,9 +25,9 @@ sha256sums=('9d26b72bb28611a60a6b9f942b8d8cfe47b59f926be89af9709b5912668344d8'
             'e37a9353ed848f35ac7b07d1398466a18741fd1de075a6cb971e1c28088d791d'
             'f343f87c5c89aa1b7112ec946c4df06b25e541d488405f4d98bedbeddd30bd32')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

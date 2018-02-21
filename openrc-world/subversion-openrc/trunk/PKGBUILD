@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=subversion-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC svnserve init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("svnserve.confd::${_url}/dev-vcs/subversion/files/svnserve.confd"
 sha256sums=('45f2dc1a718aed885559e71d98112e670c92bd6b4f19c5cf593eced6cd2bbd97'
             '3cba218e648f7722e6e5541deb9e8ca0f53188195e33b17ca19efb8a300651cb')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

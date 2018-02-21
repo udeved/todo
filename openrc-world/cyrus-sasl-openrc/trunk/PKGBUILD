@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=cyrus-sasl-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC cyrus-sasl init script"
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('systemd-sysvcompat')
 source=("saslauthd.initd::${_url}/dev-libs/cyrus-sasl/files/saslauthd2.rc7")
 sha256sums=('dea35c48fdc94e475b427cb47ff47b914a66311afbd2d8397a833a60e4c1a7a4')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

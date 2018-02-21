@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=bind-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC bind init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("named.confd::${_url}/net-dns/bind/files/named.confd-r7"
 sha256sums=('3cf1ab72446cb9417de916e4cd732f2056fb74d2c6f03da6741b7bae8c415448'
             'a1a25bd66fa2edac593e77c5469e110466b7d8dc1bfa3f72a49c7117196986a4')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=cups-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC cups init script"
 arch=('any')
@@ -16,9 +16,9 @@ conflicts=('systemd-sysvcompat')
 source=("cupsd.initd::${_url}/net-print/cups/files/cupsd.init.d-r2")
 sha256sums=('54b86ec2d7086004cde4e8b69aa49b7334718cad42a4426382f56269bb0f5a78')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=wicd-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC wicd script"
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('systemd-sysvcompat')
 source=('wicd.initd')
 sha256sums=('66b2b53b077ddc2d5eb1d81faa99fa0f4f0db01520900ba948001e539bfe02d8')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

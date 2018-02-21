@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=mysql-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC mysql init script"
 arch=('any')
@@ -20,9 +20,9 @@ sha256sums=('b94756f2a5fe43893dea90fadbe47308e50fb4dbe2cbaa2676f34fa88181d8e7'
             'd54a9d06be8204be30567591417ed6885f392b8eff4cc8840c989ac826839af0'
             '1d3472f50efe242938a3d5f8b5870355a72ec86125b91173543db768fdbe8af5')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

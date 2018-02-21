@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=transmission-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC transmission init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("transmission-daemon.confd::${_url}/net-p2p/transmission/files/transmiss
 sha256sums=('9065bcf729309aebd48ae2214a461d162924462fb2db51f33aed40dd0c3b4f25'
             '8925e7b2f59de7c116778fa9a498e8209358117b08870a9208fe37c8b2f01ee5')
 
-pkgver() {
-	date +%Y%m%d
-}
+# pkgver() {
+# 	date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1

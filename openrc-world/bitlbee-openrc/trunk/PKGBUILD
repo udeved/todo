@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=bitlbee-openrc
-pkgver=20180220
+pkgver=20180221
 pkgrel=1
 pkgdesc="OpenRC bitlbee init script"
 arch=('any')
@@ -18,9 +18,9 @@ source=("bitlbee.confd::${_url}/net-im/bitlbee/files/bitlbee.confd-r1"
 sha256sums=('cab8b8cb8709f27a5fa9f1cfce4b58db24f5cd38b8e6badb91dac0809e6ca8de'
             '4b8654dffd57243079223a1cc236edf5e47309515270fde2d18123e41cd3c29f')
 
-pkgver() {
-    date +%Y%m%d
-}
+# pkgver() {
+#     date +%Y%m%d
+# }
 
 _inst_initd(){
     install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
