@@ -3,7 +3,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=lm_sensors-openrc
-pkgver=20180221
+pkgver=20180305
 pkgrel=1
 pkgdesc="OpenRC lm_sensors init script"
 arch=('any')
