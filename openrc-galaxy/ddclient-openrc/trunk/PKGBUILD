@@ -5,7 +5,7 @@
 _url="https://raw.githubusercontent.com/gentoo/gentoo/master"
 
 pkgname=ddclient-openrc
-pkgver=20180221
+pkgver=20180305
 pkgrel=1
 pkgdesc="OpenRC ddclient init script"
 arch=('any')
