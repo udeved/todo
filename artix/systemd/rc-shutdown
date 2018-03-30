@@ -1,0 +1,31 @@
+#!/bin/bash
+
+build() {
+    add_binary openrc-shutdown /shutdown
+    add_symlink "/usr/bin/openrc-shutdown" "/usr/bin/halt"
+    add_symlink "/usr/bin/openrc-shutdown" "/usr/bin/poweroff"
+    add_symlink "/usr/bin/openrc-shutdown" "/usr/bin/reboot"
+    add_symlink "/usr/bin/openrc-shutdown" "/usr/bin/shutdown"
+
+    add_file "/usr/lib/libeinfo.so.1"
+    add_symlink "/usr/lib/libeinfo.so.1" "/usr/lib/libeinfo.so"
+    add_file "/usr/lib/librc.so.1"
+    add_symlink "/usr/lib/librc.so.1" "/usr/lib/libeinfo.so"
+    add_file "/usr/lib/librc.so.1"
+
+    add_file "/usr/lib/openrc/bin/halt"
+    add_file "/usr/lib/openrc/bin/poweroff"
+    add_file "/usr/lib/openrc/bin/reboot"
+    add_file "/usr/lib/openrc/bin/shutdown"
+
+    if type -P kexec >/dev/null; then
+        add_binary kexec
+    fi
+}
+
+help() {
+    cat <<HELPEOF
+This hook adds openrc-shutdown to the initramfs. This is only
+if the image is extracted to /run/initramfs before shutdown.
+HELPEOF
+}
